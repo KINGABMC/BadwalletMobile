@@ -1,4 +1,5 @@
 Assigné à : Bamba
+
 Objectif : Offrir une interface de recherche immobilière haut de gamme pour les studios et appartements.
 
 Map Integration : Configurer mapbox_gl pour afficher les logements disponibles autour des campus (ESP, UCAD, etc.).
