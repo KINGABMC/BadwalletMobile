@@ -1,13 +1,17 @@
-Assigné à : Bamba
+# campusnet_mobile
 
-Objectif : Offrir une interface de recherche immobilière haut de gamme pour les studios et appartements.
+A new Flutter project.
 
+## Getting Started
 
+This project is a starting point for a Flutter application.
 
-   Map Integration : Configurer mapbox_gl pour afficher les logements disponibles autour des campus (ESP, UCAD, etc.).
+A few resources to get you started if this is your first Flutter project:
 
-   Exploration : Créer une vue en liste avec des filtres par prix, quartier et commodités (eau, électricité).
+- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
+- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-   Détails : Concevoir la page de détails du bien avec un carrousel d'images (provenant de Cloudinary) et la fiche descriptive du bailleur.
-
-   Contact : Intégrer le bouton d'appel direct et la prise de rendez-vous pour visite.
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
