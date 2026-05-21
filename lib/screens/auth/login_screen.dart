@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _isLoading = false);
 
     if (result.isSuccess) {
-      // TODO : Navigator.pushReplacement vers DashboardScreen
+      //TODO : Navigator.pushReplacement vers DashboardScreen
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Bienvenue ${result.user!.nomComplet} !'),
@@ -64,6 +64,17 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                    color: CampusColors.textPrimary,
+                    iconSize: 22,
+                    onPressed: () {
+                      Navigator.pop(context); // Ferme l'écran actuel et revient à l'accueil
+                    },
+                  ),
+                ),
                 const SizedBox(height: 40),
 
                 // ── Logo ──

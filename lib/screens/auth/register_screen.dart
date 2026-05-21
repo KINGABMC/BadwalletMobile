@@ -103,8 +103,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       // TODO : Navigator vers écran de vérification carte étudiant
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:
-              Text('Compte créé ! Bienvenue ${result.user!.nomComplet} 🎉'),
+          content: Text(
+            'Compte créé ! Bienvenue ${result.user!.nomComplet} 🎉',
+          ),
           backgroundColor: Colors.green,
         ),
       );
@@ -122,6 +123,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 16.0, right: 16.0),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                    color: CampusColors.textPrimary,
+                    iconSize: 22,
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                      ); // Ferme l'écran actuel et revient à l'accueil
+                    },
+                  ),
+                ),
+              ),
               const SizedBox(height: 24),
 
               // ── Logo ──
@@ -172,7 +189,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const Text(
                     'Déjà un compte ? ',
                     style: TextStyle(
-                        color: CampusColors.textSecondary, fontSize: 14),
+                      color: CampusColors.textSecondary,
+                      fontSize: 14,
+                    ),
                   ),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
@@ -276,10 +295,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           const SizedBox(height: 24),
 
           // ── Bouton Continuer ──
-          CampusPrimaryButton(
-            label: 'Continuer',
-            onPressed: _goToStep2,
-          ),
+          CampusPrimaryButton(label: 'Continuer', onPressed: _goToStep2),
         ],
       ),
     );

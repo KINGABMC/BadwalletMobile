@@ -10,7 +10,7 @@ class LogementsScreen extends StatefulWidget {
 }
 
 class _LogementsScreenState extends State<LogementsScreen> {
-  bool _showFilters = true;
+  bool _showFilters = false;
   double _currentMaxPrice = 500000;
   String _currentRooms = 'Toutes';
   String _currentNeighborhood = 'Tout';

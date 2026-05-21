@@ -65,7 +65,7 @@ class CampusStepper extends StatelessWidget {
           decoration: BoxDecoration(
             color: isActive
                 ? CampusColors.primary
-                : CampusColors.textSecondary.withOpacity(0.4),
+                : CampusColors.textSecondary.withValues(alpha: 0.4),
             borderRadius: BorderRadius.circular(4),
           ),
         );
@@ -317,9 +317,9 @@ class ErrorBanner extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: CampusColors.error.withOpacity(0.1),
+        color: CampusColors.error.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: CampusColors.error.withOpacity(0.3)),
+        border: Border.all(color: CampusColors.error.withValues( alpha: 0.3)),
       ),
       child: Row(
         children: [

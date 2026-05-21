@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
 
         // Section Catégories / Raccourcis
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -61,15 +61,15 @@ class HomeScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
+                mainAxisSpacing: 1,
+                crossAxisSpacing: 1,
                 children: [
                   _buildServiceCard(context, Icons.apartment, 'Logements disponibles', 'Les étudiants signalent les logements qu\'ils quittent avec photos, localisation et détails.'),
                   _buildServiceCard(context, Icons.people, 'Colocations', 'Propose ou cherche une colocation. Trouve des colocataires compatibles.'),
                   _buildServiceCard(context, Icons.shopping_bag, 'Marketplace mobilier', 'Achète et vends du mobilier d\'occasion entre étudiants. Paiement Wave & OM.'),
                   _buildServiceCard(context, Icons.forum, 'Contact Direct', 'Contacte les annonceurs via WhatsApp ou appel directement depuis l\'app.'),
-                  _buildServiceCard(context, Icons.location_on, 'Profil', 'Modifie ou cree votre profil.'),
-                  _buildServiceCard(context, Icons.settings, 'Paramètres', 'Modifiez votre paramètres de notification et de privacité.'),
+                  _buildServiceCard(context, Icons.location_on, 'Géolocalisation', 'Chaque annonce est géolocalisée pour trouver ce qui est près de ton campus'),
+                  _buildServiceCard(context, Icons.photo, 'Photos vérifiées', 'Des photos réelles pour chaque annonce. Pas de mauvaises surprises.'),
                 ],
               ),
             ],

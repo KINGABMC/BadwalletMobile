@@ -3,6 +3,8 @@ import 'screens/home_screen.dart';
 import 'screens/logements_screen.dart';
 import 'screens/colocations_screen.dart';
 import 'screens/marketplace_screen.dart';
+import 'screens/auth/login_screen.dart';
+import 'screens/auth/register_screen.dart'; 
 
 void main() {
   runApp(const CampusNetApp());
@@ -139,7 +141,13 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
                 children: [
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: () => setState(() => _showBurgerMenu = false),
+                      onPressed: () {
+                        setState(() => _showBurgerMenu = false); // Ferme le menu dropdown
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginScreen()),
+                        );
+                      },
                       style: OutlinedButton.styleFrom(
                         backgroundColor: isDark ? const Color(0xFF1E2533) : Colors.white,
                         side: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade300),
@@ -161,7 +169,13 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => setState(() => _showBurgerMenu = false),
+                      onPressed: () {
+                        setState(() => _showBurgerMenu = false); // Ferme le menu dropdown
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                        );
+                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF0A3663),
                         foregroundColor: Colors.white,
