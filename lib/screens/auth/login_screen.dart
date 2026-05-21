@@ -64,6 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             child: Column(
               children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child:
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: IconButton(
@@ -74,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pop(context); // Ferme l'écran actuel et revient à l'accueil
                     },
                   ),
+                ),
                 ),
                 const SizedBox(height: 40),
 
