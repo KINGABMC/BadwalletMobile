@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../models/user_model.dart';
 
 class AuthService {
   // ⚠️ Remplace par l'IP de ta machine (pas localhost sur émulateur Android)

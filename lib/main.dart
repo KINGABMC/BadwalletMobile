@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/logements_screen.dart';
-import 'screens/colocations_screen.dart';
-import 'screens/marketplace_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart'; 
 
@@ -69,10 +65,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   bool _showBurgerMenu = false; 
 
   final List<Widget> _screens = [
-    const HomeScreen(),
-    const LogementsScreen(),
-    const ColocationsScreen(),
-    const MarketplaceScreen(),
+
   ];
 
   @override
