@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/auth/login_screen.dart';
-import 'screens/auth/register_screen.dart'; 
 
 void main() {
   runApp(const CampusNetApp());
@@ -166,7 +165,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
                         setState(() => _showBurgerMenu = false); // Ferme le menu dropdown
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                          
                         );
                        },
                       style: ElevatedButton.styleFrom(
