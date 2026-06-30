@@ -72,4 +72,37 @@ class ApiService extends ChangeNotifier {
       notifyListeners();
     }
    }
+   // Effectuer le paiement groupé de factures
+  Future<bool> payBills({required String phone, required double totalAmount, required List<String> billNames}) async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final response = await http.post(
+        Uri.parse('${ApiConstants.baseUrl}/wallets/pay-bills'), // Modifie l'endpoint selon la doc exacte de ton API au besoin
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'phoneNumber': phone,
+          'amount': totalAmount,
+          'description': 'Paiement factures: ${billNames.join(", ")}',
+        }),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // Mise à jour immédiate du solde local après paiement réussi
+        await fetchWalletBalance(phone);
+        return true;
+      } else {
+        _errorMessage = 'Échec du paiement des factures (${response.statusCode})';
+        return false;
+      }
+    } catch (e) {
+      _errorMessage = 'Erreur de connexion au serveur pour le paiement';
+      return false;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
 }
