@@ -41,4 +41,35 @@ class ApiService extends ChangeNotifier {
       notifyListeners();
     }
   }
+  Future<bool> makeTransfer(String senderPhone, String receiverPhone, double amount) async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final response = await http.post(
+        Uri.parse('${ApiConstants.baseUrl}/wallets/transfer'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'senderPhone': senderPhone,
+          'receiverPhone': receiverPhone,
+          'amount': amount,
+        }),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // Si le transfert est réussi, on met à jour le solde local
+        await fetchWalletBalance(senderPhone);
+        return true;
+      } else {
+        _errorMessage = 'Échec du transfert (${response.statusCode})';
+        return false;
+      }
+    } catch (e) {
+      _errorMessage = 'Erreur de connexion au serveur backend';
+      return false;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+   }
 }
