@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../core/constant.dart';
+import '../../models/transaction_model.dart'; 
 
 class ApiService extends ChangeNotifier {
   double _balance = 0.0;
@@ -41,6 +42,8 @@ class ApiService extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  // Effectuer un transfert d'argent
   Future<bool> makeTransfer(String senderPhone, String receiverPhone, double amount) async {
     _isLoading = true;
     _errorMessage = null;
@@ -71,8 +74,9 @@ class ApiService extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
-   }
-   // Effectuer le paiement groupé de factures
+  }
+
+  // Effectuer le paiement groupé de factures
   Future<bool> payBills({required String phone, required double totalAmount, required List<String> billNames}) async {
     _isLoading = true;
     _errorMessage = null;
@@ -80,7 +84,7 @@ class ApiService extends ChangeNotifier {
 
     try {
       final response = await http.post(
-        Uri.parse('${ApiConstants.baseUrl}/wallets/pay-bills'), // Modifie l'endpoint selon la doc exacte de ton API au besoin
+        Uri.parse('${ApiConstants.baseUrl}/wallets/pay-bills'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'phoneNumber': phone,
@@ -100,6 +104,34 @@ class ApiService extends ChangeNotifier {
     } catch (e) {
       _errorMessage = 'Erreur de connexion au serveur pour le paiement';
       return false;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  List<TransactionModel> _transactions = [];
+  List<TransactionModel> get transactions => _transactions;
+
+  // Récupérer l'historique complet des transactions
+  Future<void> fetchTransactions(String phone) async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final response = await http.get(
+        Uri.parse('${ApiConstants.baseUrl}/wallets/$phone/transactions'),
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        _transactions = data.map((json) => TransactionModel.fromJson(json)).toList();
+      } else {
+        _errorMessage = 'Impossible de charger l\'historique (${response.statusCode})';
+      }
+    } catch (e) {
+      _errorMessage = 'Erreur de connexion lors de la récupération de l\'historique';
     } finally {
       _isLoading = false;
       notifyListeners();
